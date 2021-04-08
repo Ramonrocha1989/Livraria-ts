@@ -16,6 +16,12 @@ export default class Capitulo{
     public get texto():string{
         return this._texto
     }
+    public set titulo(titulo: string){
+        this._titulo = titulo;
+   }
 
+   public set texto(texto: string){
+       this._texto = texto;
+  }
     }
     
