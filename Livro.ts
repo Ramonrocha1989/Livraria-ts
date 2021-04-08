@@ -47,22 +47,34 @@ export default class Livro{
     }
 
     public adicionarCapitulo(titulo: string, texto: string): number{
-        return this._capitulo.push(new Capitulo(titulo,texto));
+        if(this._capitulo.length < 100){
+            return this._capitulo.push(new Capitulo(titulo,texto));
+        }else{
+            return -1;
+        }
     }
 
     public removeCapitulo(capitulo: Capitulo): number{
         let index = this._capitulo.indexOf(capitulo);
-        this._capitulo.splice(index,1);
+        if(index != -1){
+            this._capitulo.splice(index,1);
+        }
         return index;
     }
 
     public adicionarAutor(autor: Autor): number{
-        return this._autor.push(autor);
+        if(this._autor.length < 6){
+            return this._autor.push(autor);
+        }else{
+            return -1;
+        }
     }
 
     public removeAutor(autor: Autor): number{
         let index = this._autor.indexOf(autor);
-        this._autor.splice(index,1);
+        if(index != -1){
+            this._autor.splice(index,1);
+        }
         return index;
     }
 
