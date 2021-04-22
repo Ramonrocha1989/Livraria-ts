@@ -1,4 +1,4 @@
-import * as prompt from "prompt-sync";
+import prompt from "prompt-sync";
 import Autor from "./autor";
 import Capitulo from "./Capitulo";
 import Livraria from "./Livraria";
@@ -35,6 +35,7 @@ while (opcao != 9) {
         case 4:
             break;
         case 5:
+            modificarAcervo()
             break;
         case 6:
             listarCapitulos();
@@ -60,7 +61,7 @@ function cadastrarLivro() {
         console.log("Autor " + (i + 1) + " de " + numeroAut + ":\n");
         let nome = tec("Informe o nome do autor: ");
         let dtNascimento = tec("Informe a data de nascimento do autor: ");
-        autor.push(new Autor(nome, dtNascimento));
+        autor.push(new Autor(nome, new Date(dtNascimento)));
     }
 
     let tituloLivro = tec("Informe o título do livro: ");
@@ -87,6 +88,40 @@ function listarCapitulos(){
     }*/
     for(let i = 0; i < livraria.livros[id - 1].capitulos.length; i++){
         console.log("Capitulo: " + (i + 1) + ": " + livraria.livros[id - 1].capitulos[i].titulo);
+    }
+}
+
+function adicionarCapitulo(livro : Livro){
+    let titulo = tec("Informe o título do capítulo: ");
+    let texto = tec("Informe o texto do capítulo: ");
+    livro.adicionarCapitulo(titulo, texto);
+}
+
+function adicionarAutor(livro : Livro){
+    let nome = tec("Informe o nome do autor: ");
+    let dtNascimento = tec("Informe a data de nascimento do autor: ");
+    livro.adicionarAutor(new Autor(nome, new Date(dtNascimento)));
+}
+
+function modificarAcervo(){
+    listarAcervo();
+    let id = Number(tec("Informe o livro: "));
+    let livro = livraria.livros[id - 1];
+    console.log('+================================================================+');
+    console.log('|                    Livraria Jalee                              |');
+    console.log('|________________________________________________________________|');
+    console.log('| 1. Inserir novo capítulo                                       |');
+    console.log('| 2. Inserir novo autor                                          |');
+    console.log('|________________________________________________________________|');
+    let opc = Number(tec("Informe uma opção: "));
+    switch (opc) {
+        case 1:
+            adicionarCapitulo(livro);
+            break;
+        case 2:
+            adicionarAutor(livro);
+            break;
+        
     }
 }
 
