@@ -5,13 +5,14 @@ export default class Livro{
 
     private _titulo: string;
     private _isbn: string;
-    private _autor: Autor[];
-    private _capitulo: Capitulo[];
+    private _capitulo : Capitulo[]
+    private _autor : Autor[]
 
     constructor(titulo: string, isbn: string){
         this._titulo = titulo;
         this._isbn = isbn;
-      
+        this._autor = [];
+        this._capitulo = [];
     }
     
     public get capitulos(): Capitulo[]{
@@ -65,9 +66,12 @@ export default class Livro{
     public adicionarAutor(autor: Autor): number{
         if(this._autor.length < 6){
             return this._autor.push(autor);
+            
         }else{
             return -1;
-        }
+       }
+        
+        
     }
 
     public removeAutor(autor: Autor): number{
