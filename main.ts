@@ -28,6 +28,7 @@ while (opcao != 9) {
             cadastrarLivro();
             break;
         case 2:
+            removerlivro()
             break;
         case 3:
             listarAcervo();
@@ -70,6 +71,12 @@ function cadastrarLivro() {
     
 }
 
+function removerlivro(){
+    listarAcervo()
+    let id = Number(tec("Informe o livro: "));
+    livraria.livros.splice(id-1);
+    console.log("Livro Excluido com Sucesso")
+}
 function listarAcervo() {
     let i = 0;
     for(let livro of livraria.livros){
@@ -77,6 +84,7 @@ function listarAcervo() {
         console.log("Livro: " + i + " - " + livro.titulo + "\n");
     }
 }
+
 
 function listarCapitulos(){
     listarAcervo();
