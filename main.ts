@@ -33,6 +33,7 @@ while (opcao != 9) {
             listarAcervo();
             break;
         case 4:
+            resetarLivraria()
             break;
         case 5:
             modificarAcervo()
@@ -123,5 +124,9 @@ function modificarAcervo(){
             break;
         
     }
+}
+
+function resetarLivraria() {
+    livraria = new Livraria()
 }
 
