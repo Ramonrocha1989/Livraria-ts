@@ -1,20 +1,39 @@
+import Autor from "./autor";
+import Capitulo from "./Capitulo";
+import Livro from "./Livro";
+
+
+
 export default class Livraria{
 
-    private _titulo: string;
-    private _texto: string;
+    private _livro: Livro[];
 
-    constructor(titulo: string, texto: string){
-        this._titulo = titulo;
-        this._texto = texto;
-        
-    }
-    public get titulo(): string{
-        return this._titulo;
+    constructor(){
+        this._livro = [];
     }
 
-    public get texto(): string{
-        return this._texto;
+    public cadastrarLivro(livro : Livro, autores: Array<Autor>, capitulos: Array<Capitulo>){
+        this.cadastraAutores(livro, autores);
+        this.cadastraCapitulos(livro, capitulos);
+        this._livro.push(livro);
     }
+
+    public get livros(): Livro[]{
+        return this._livro;
+    }
+    
+    private cadastraAutores(livro : Livro, autores: Autor[]){
+        for (let autor of autores){
+            livro.adicionarAutor(autor);
+        }
+    }
+
+    private cadastraCapitulos(livro : Livro, capitulos: Capitulo[]){
+        for (let capitulo of capitulos){
+            livro.adicionarCapitulo(capitulo.titulo, capitulo.texto);
+        }
+    }
+
 
 
 }
